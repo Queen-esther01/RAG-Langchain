@@ -14,12 +14,27 @@ from langchain_text_splitters import CharacterTextSplitter
 
 load_dotenv()
 
-# st.sidebar.subheader("Streamlit App")
-with st.sidebar:
-    st.title("Streamlit App")
+st.set_page_config(page_title="PDF Q&A", page_icon="📄")
 
-st.set_page_config(page_title="Streamlit Rag Demo")
-st.title("Streamlit Rag Demo")
+with st.sidebar:
+    st.title("PDF Q&A")
+    st.markdown(
+        "Upload a PDF document and ask questions about its contents. "
+        "Answers are generated using retrieval-augmented generation powered by "
+        "**GPT-4o** and **ChromaDB**."
+    )
+    st.divider()
+    st.subheader("How it works")
+    st.markdown(
+        "1. Your PDF is split into small chunks\n"
+        "2. Chunks are embedded and stored in a vector database\n"
+        "3. Relevant chunks are retrieved for your question\n"
+        "4. An LLM synthesises an answer from those chunks"
+    )
+    st.divider()
+    st.caption("Built with LangChain & Streamlit")
+
+st.title("PDF Q&A")
 
 uploaded_file = st.file_uploader("Choose a file", type="pdf")
 # if uploaded_files:
